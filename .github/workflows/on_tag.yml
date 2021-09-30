@@ -19,7 +19,9 @@ jobs:
       - name: Check Tag
         env:
           GH_TAG: ${{ github.ref }}
-        run: bash check_tag.sh "${GH_TAG}"
+        run: |
+          chmod +x check_tag.sh
+          ./check_tag.sh "${GH_TAG}"
       - name: Next step
         if: ${{ contains(steps.check-tag.outputs.TAG_BUILD_TYPES, matrix.MY_BUILD_TYPE) }}
         run: echo I'm running !!
