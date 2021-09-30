@@ -21,8 +21,8 @@ jobs:
           GH_TAG: ${{ github.ref }}
         run: ./check_tag.sh "${GH_TAG}"
       - name: Next step
-        if: ${{ contains(steps.check-tag.outputs.TAG_BUILD_TYPES, MY_BUILD_TYPE) }}
+        if: ${{ contains(steps.check-tag.outputs.TAG_BUILD_TYPES, matrix.MY_BUILD_TYPE) }}
         run: echo I'm running !!
       - name: Last step
-        if: ${{ contains(steps.check-tag.outputs.TAG_BUILD_TYPES, MY_BUILD_TYPE) }}
+        if: ${{ contains(steps.check-tag.outputs.TAG_BUILD_TYPES, matrix.MY_BUILD_TYPE) }}
         run: echo I'm running faster!
