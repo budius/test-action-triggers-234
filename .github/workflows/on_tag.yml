@@ -16,6 +16,9 @@ jobs:
           - MY_BUILD_TYPE: TYPE_XYZ
           
     steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.head_ref }}
       - name: Check Tag
         env:
           GH_TAG: ${{ github.ref }}
