@@ -29,11 +29,11 @@ jobs:
           ./check_tag.sh "${GH_TAG}" "${MY_BUILD_TYPE}"
       - name: See result from check tag
         env:
-          FOO_BAR_VALUE: ${{ steps.check-tag.outputs.FOO_BAR_VALUE }}      
-        run: echo "Should I stay or should I go ${FOO_BAR_VALUE}"
+          CONTINUE: ${{ steps.check-tag.outputs.CONTINUE }}      
+        run: echo "Should I stay or should I go ${CONTINUE}"
       - name: Next step
-        if: ${{ steps.check-tag.outputs.FOO_BAR_VALUE }}
+        if: ${{ steps.check-tag.outputs.CONTINUE }}
         run: echo "I'm running !!"
       - name: Last step
-        if: ${{ steps.check-tag.outputs.FOO_BAR_VALUE }}
+        if: ${{ steps.check-tag.outputs.CONTINUE }}
         run: echo "I'm running faster!"
