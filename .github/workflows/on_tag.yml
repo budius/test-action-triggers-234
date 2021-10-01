@@ -20,6 +20,7 @@ jobs:
         with:
           ref: ${{ github.head_ref }}
       - name: Check Tag
+        id: check-tag
         env:
           GH_TAG: ${{ github.ref }}
         run: |
