@@ -32,8 +32,8 @@ jobs:
           CONTINUE: ${{ steps.check-tag.outputs.CONTINUE }}      
         run: echo "Should I stay or should I go ${CONTINUE}"
       - name: Next step
-        if: steps.check-tag.outputs.CONTINUE
+        if: ${{ steps.check-tag.outputs.CONTINUE == true }}
         run: echo "I'm running !!"
       - name: Last step
-        if: steps.check-tag.outputs.CONTINUE
+        if: ${{ steps.check-tag.outputs.CONTINUE == true }}
         run: echo "I'm running faster!"
