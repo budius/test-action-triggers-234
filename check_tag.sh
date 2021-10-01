@@ -1,12 +1,22 @@
-echo "let's try"
-if [[ $1 =~ ^refs/tags/([0-9]+).([0-9]+).([0-9]+)$ ]]; then
-    echo "type 123 and abc"
-    echo "::set-output name=TAG_BUILD_TYPES::TYPE_123,TYPE_ABC"
+GH_TAG=$1
+MY_BUILD_TYPE=$2
+echo "GH_TAG = $GH_TAG and MY_BUILD_TYPE = $MY_BUILD_TYPE"
+if [[ $GH_TAG =~ ^refs/tags/([0-9]+).([0-9]+).([0-9]+)$ ]]; then
+    echo "type 123 or abc"
+    if [[ "TYPE_123" == "$MY_BUILD_TYPE" ]] || [[ "TYPE_ABC" == "$MY_BUILD_TYPE" ]]; then
+        echo "::set-output name=CONTINUE::true"
+    else
+        echo "::set-output name=CONTINUE::false"
+    fi
 elif [[ $1 =~ ^refs/tags/([0-9]+).([0-9]+).(([0-9]+)|X)-S([0-9]+)$ ]]; then
     echo "type xyz"
-    echo "::set-output name=TAG_BUILD_TYPES::TYPE_XYZ"
+    if [[ "TYPE_XYZ" == "$MY_BUILD_TYPE" ]]; then
+        echo "::set-output name=CONTINUE::true"
+    else
+        echo "::set-output name=CONTINUE::false"
+    fi
 else
     echo "not allowed"
-    echo "::set-output name=TAG_BUILD_TYPES::NO"
+    echo "::set-output name=CONTINUE::false"
     exit 1
 fi
