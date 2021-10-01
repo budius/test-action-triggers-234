@@ -28,7 +28,7 @@ jobs:
       - name: printf
         env:
           GH_TAG: ${{ github.ref }}
-          MY_BUILD_TYPE: ${{ github.ref }}
+          MY_BUILD_TYPE: ${{ matrix.MY_BUILD_TYPE }}
           TAG_TYPE: ${{ steps.check-tag.outputs.TAG_BUILD_TYPES }}
         run: |
           echo "GH_TAG = $GH_TAG"
