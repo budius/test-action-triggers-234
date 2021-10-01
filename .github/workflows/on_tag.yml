@@ -28,8 +28,8 @@ jobs:
           chmod +x check_tag.sh
           ./check_tag.sh "${GH_TAG}" "${MY_BUILD_TYPE}"
       - name: Next step
-        if: ${{ contains(steps.check-tag.outputs.TAG_BUILD_TYPES, matrix.MY_BUILD_TYPE) }}
+        if: ${{ steps.check-tag.outputs.CONTINUE }}
         run: echo "I'm running !!"
       - name: Last step
-        if: ${{ contains(steps.check-tag.outputs.TAG_BUILD_TYPES, matrix.MY_BUILD_TYPE) }}
+        if: ${{ steps.check-tag.outputs.CONTINUE }}
         run: echo "I'm running faster!"
