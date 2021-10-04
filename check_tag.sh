@@ -1,6 +1,12 @@
 GH_TAG=$1
 MY_BUILD_TYPE=$2
 echo "GH_TAG = $GH_TAG and MY_BUILD_TYPE = $MY_BUILD_TYPE"
+
+TO_REMOVE="refs/tags/"
+PLAIN_TAG="${GH_TAG//TO_REMOVE}"
+
+echo $PLAIN_TAG
+
 # Check for release version
 if [[ $GH_TAG =~ ^refs/tags/([0-9]+).([0-9]+).([0-9]+)$ ]]; then
     echo "Type Release"
