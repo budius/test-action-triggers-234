@@ -3,7 +3,7 @@ MY_BUILD_TYPE=$2
 echo "GH_TAG = $GH_TAG and MY_BUILD_TYPE = $MY_BUILD_TYPE"
 
 TO_REMOVE="refs/tags/"
-PLAIN_TAG="${GH_TAG/TO_REMOVE/}"
+PLAIN_TAG="${${GH_TAG}/${TO_REMOVE}/}"
 
 echo $PLAIN_TAG
 
