@@ -32,8 +32,15 @@ jobs:
           CONTINUE: ${{ steps.check-tag.outputs.CONTINUE }}      
         run: echo "Should I stay or should I go ${CONTINUE}"
       - name: Next step
+        env:
+          GH_TAG: ${{ github.ref }}
         if: ${{ steps.check-tag.outputs.CONTINUE == 'true' }}
-        run: echo "I'm running !!"
+        run: echo "I'm running !!" > "output${GH_TAG}.txt"
       - name: Last step
         if: ${{ steps.check-tag.outputs.CONTINUE == 'true' }}
         run: echo "I'm running faster!"
+      - name: Upload to Github release page
+        if: ${{ steps.check-tag.outputs.CONTINUE == 'true' }}
+        uses: softprops/action-gh-release@v1
+        with:
+          files: output${{ github.ref }}.txt
