@@ -7,7 +7,7 @@ on:
       
 jobs:
   screenshot:
-    if: github.event.head_commit.message != 'Bot Updated screenshots'
+    if: ${{ github.event.head_commit.message != 'Bot Updated screenshots' }}
     runs-on: ubuntu-latest
     steps:
       - name: Prepare Git
