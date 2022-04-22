@@ -5,7 +5,7 @@ on:
 
 jobs:
   screenshot:
-    if: github.actor != 'beep-boop'
+    if: ${{ github.actor != 'beep-boop' }}
     runs-on: ubuntu-latest
     steps:
      - name: Debug Log
