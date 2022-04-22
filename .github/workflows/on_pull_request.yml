@@ -20,3 +20,5 @@ jobs:
           git status
           date > text.txt
           git status
+          echo try porcelain
+          git status --porcelain
