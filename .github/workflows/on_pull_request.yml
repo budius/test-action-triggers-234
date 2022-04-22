@@ -7,16 +7,28 @@ on:
       
 jobs:
   screenshot:
+    if: ${{ github.event.head_commit.message != 'Bot Updated screenshots' }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - run: echo ${{ github.event.head_commit.message }}
+      - name: Prepare Git
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          token: ${{ secrets.GH_ACCESS_TOKEN }}
       - name: Do stuff
-        env:
-            BRANCH_BASE: ${{ env.base_branch }}
-            BRANCH_TARGET: ${{ env.target_branch }}
         run: |
-          echo Base branch is $BRANCH_BASE
-          echo Target branch is $BRANCH_TARGET
-          git remote
-          git fetch origin
-          git checkout origin/$BRANCH_BASE
+          date > text.txt
+      # - name: Commit Changes
+      #   env:
+      #       BRANCH_BASE: ${{ github.head_ref }}
+      #   run: |
+      #     GIT_STATUS=$(git status --porcelain)
+      #     if [[ -n "$GIT_STATUS" ]]
+      #     then
+      #       git config --global user.email "bot@action.bot"
+      #       git config --global user.name "beep-boop"
+      #       git add .
+      #       git commit -m "Bot Updated screenshots"
+      #       git push origin $BRANCH_BASE
+      #     fi
