@@ -27,6 +27,8 @@ jobs:
           GIT_STATUS=$(git status --porcelain)
           if [[ -n "$GIT_STATUS" ]]
           then
+            git config --global user.email "bot@action.bot"
+            git config --global user.name "beep-boop"
             git add .
             git commit -m "Addde CI"
             git push origin $BRANCH_BASE
