@@ -1,5 +1,7 @@
 name: Test scripting
 
+# Try again
+
 on:
   pull_request:
     paths-ignore:
