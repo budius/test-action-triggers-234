@@ -10,7 +10,7 @@ jobs:
     steps:
      - name: Debug Log
        env:
-           COMMIT_MSG: ${{ GITHUB_ACTOR }}
+           COMMIT_MSG: ${{ env.GITHUB_ACTOR }}
        run: |
          echo Message was $COMMIT_MSG
       # - name: Prepare Git
