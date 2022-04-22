@@ -8,29 +8,29 @@ jobs:
     if: github.actor != 'beep-boop'
     runs-on: ubuntu-latest
     steps:
-     - name: Debug Log
-       env:
-           PRINT_THIS: ${{ github.actor }}
-       run: |
-         echo Debug: $PRINT_THIS
-      # - name: Prepare Git
-      #   uses: actions/checkout@v2
-      #   with:
-      #     ref: ${{ github.event.pull_request.head.ref }}
-      #     token: ${{ secrets.GH_ACCESS_TOKEN }}
-      # - name: Do stuff
-      #   run: |
-      #     date > text.txt
-      # - name: Commit Changes
-      #   env:
-      #       BRANCH_BASE: ${{ github.head_ref }}
-      #   run: |
-      #     GIT_STATUS=$(git status --porcelain)
-      #     if [[ -n "$GIT_STATUS" ]]
-      #     then
-      #       git config --global user.email "bot@action.bot"
-      #       git config --global user.name "beep-boop"
-      #       git add .
-      #       git commit -m "Bot Updated screenshots"
-      #       git push origin $BRANCH_BASE
-      #     fi
+      - name: Debug Log
+        env:
+          PRINT_THIS: ${{ github.actor }}
+        run: |
+          echo Debug: $PRINT_THIS
+      - name: Prepare Git
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          token: ${{ secrets.GH_ACCESS_TOKEN }}
+      - name: Do stuff
+        run: |
+          date > text.txt
+      - name: Commit Changes
+        env:
+            BRANCH_BASE: ${{ github.head_ref }}
+        run: |
+          GIT_STATUS=$(git status --porcelain)
+          if [[ -n "$GIT_STATUS" ]]
+          then
+            git config --global user.email "bot@action.bot"
+            git config --global user.name "beep-boop"
+            git add .
+            git commit -m "Bot Updated screenshots"
+            git push origin $BRANCH_BASE
+          fi
