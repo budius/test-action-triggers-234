@@ -12,6 +12,9 @@ jobs:
     if: ${{ github.event.head_commit.message != 'Bot Updated screenshots' }}
     runs-on: ubuntu-latest
     steps:
+      - run: echo $DEBUG && delay 5
+        with:
+          DEBUG: ${{ github.event.head_commit.message }}
       - name: Prepare Git
         uses: actions/checkout@v2
         with:
