@@ -20,7 +20,7 @@ jobs:
       - name: Do stuff
         run: |
           date > text.txt
-      - name: Do stuff
+      - name: Commit Changes
         env:
             BRANCH_BASE: ${{ github.head_ref }}
         run: |
