@@ -1,0 +1,22 @@
+name: Test scripting
+
+on:
+  pull_request:
+    paths-ignore:
+      - 'screenshots/**'
+      
+jobs:
+  screenshot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Do stuff
+        env:
+            BRANCH_BASE: ${{ env.base_branch }}
+            BRANCH_TARGET: ${{ env.target_branch }}
+        run: |
+          echo Base branch is $BRANCH_BASE
+          echo Target branch is $BRANCH_TARGET
+          git remote
+          git fetch origin
+          git checkout origin/$BRANCH_BASE
