@@ -15,7 +15,7 @@ jobs:
             BRANCH_BASE: ${{ github.head_ref }}
         run: |
           echo Base branch is $BRANCH_BASE
-          git fetch origin
+          git fetch origin $BRANCH_BASE
           git checkout -b $BRANCH_BASE origin/$BRANCH_BASE
       - name: Do stuff
         run: |
