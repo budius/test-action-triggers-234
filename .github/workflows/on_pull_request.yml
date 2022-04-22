@@ -1,9 +1,4 @@
 name: Test scripting
-
-on:
-  pull_request:
-    paths-ignore:
-      - 'screenshots/**'
       
 jobs:
   screenshot:
@@ -19,16 +14,16 @@ jobs:
       - name: Do stuff
         run: |
           date > text.txt
-      # - name: Commit Changes
-      #   env:
-      #       BRANCH_BASE: ${{ github.head_ref }}
-      #   run: |
-      #     GIT_STATUS=$(git status --porcelain)
-      #     if [[ -n "$GIT_STATUS" ]]
-      #     then
-      #       git config --global user.email "bot@action.bot"
-      #       git config --global user.name "beep-boop"
-      #       git add .
-      #       git commit -m "Bot Updated screenshots"
-      #       git push origin $BRANCH_BASE
-      #     fi
+      - name: Commit Changes
+        env:
+            BRANCH_BASE: ${{ github.head_ref }}
+        run: |
+          GIT_STATUS=$(git status --porcelain)
+          if [[ -n "$GIT_STATUS" ]]
+          then
+            git config --global user.email "bot@action.bot"
+            git config --global user.name "beep-boop"
+            git add .
+            git commit -m "Bot Updated screenshots"
+            git push origin $BRANCH_BASE
+          fi
