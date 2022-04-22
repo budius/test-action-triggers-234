@@ -15,6 +15,7 @@ jobs:
             BRANCH_BASE: ${{ env.base_branch }}
             BRANCH_TARGET: ${{ env.target_branch }}
         run: |
+          echo Now it runs?
           echo Base branch is $BRANCH_BASE
           echo Target branch is $BRANCH_TARGET
           git remote
