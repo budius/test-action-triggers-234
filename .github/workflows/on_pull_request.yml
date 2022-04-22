@@ -24,8 +24,8 @@ jobs:
         env:
             BRANCH_BASE: ${{ github.head_ref }}
         run: |
-          set -x
-          if [[ -z "$(git status --porcelain)" ]] 
+          GIT_STATUS=$(git status --porcelain)
+          if [[ -n "$GIT_STATUS" ]]
           then
             git add .
             git commit -m "Addde CI"
