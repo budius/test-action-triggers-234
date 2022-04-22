@@ -10,15 +10,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Do stuff
+      - name: Prepare Git
         env:
             BRANCH_BASE: ${{ github.head_ref }}
         run: |
           echo Base branch is $BRANCH_BASE
           git fetch origin
           git checkout -b $BRANCH_BASE origin/$BRANCH_BASE
-          git status
+      - name: Do stuff
+        run: |
           date > text.txt
-          git status
-          echo try porcelain
-          git status --porcelain
+      - name: Do stuff
+        env:
+            BRANCH_BASE: ${{ github.head_ref }}
+        run: |
+          if [[ -z $(git status --porcelain) ]] 
+          then
+            git add .
+            git commit -m "Addde CI"
+            git push origin $BRANCH_BASE
+          fi
