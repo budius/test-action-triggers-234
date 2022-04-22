@@ -12,7 +12,7 @@ jobs:
        env:
            COMMIT_MSG: ${{ env.GITHUB_ACTOR }}
        run: |
-         echo Message was $COMMIT_MSG
+         echo Message was ${{ env.GITHUB_ACTOR }}
       # - name: Prepare Git
       #   uses: actions/checkout@v2
       #   with:
