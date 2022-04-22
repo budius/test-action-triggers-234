@@ -10,9 +10,9 @@ jobs:
     steps:
      - name: Debug Log
        env:
-           COMMIT_MSG: ${{ env.GITHUB_ACTOR }}
+           PRINT_THIS: ${{ github.actor }}
        run: |
-         echo Message was ${{ env.GITHUB_ACTOR }}
+         echo Debug: $PRINT_THIS
       # - name: Prepare Git
       #   uses: actions/checkout@v2
       #   with:
