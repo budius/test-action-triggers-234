@@ -24,6 +24,7 @@ jobs:
         env:
             BRANCH_BASE: ${{ github.head_ref }}
         run: |
+          set -x
           if [[ -z $(git status --porcelain) ]] 
           then
             git add .
