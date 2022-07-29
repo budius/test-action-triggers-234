@@ -21,3 +21,17 @@ $code-text-color: #ffffff !default;
 $border-color: #dce6f0 !default;
 $table-border-color: #e9ebec !default;
 $hr-border-color: #eff0f1 !default;
+
+// Syntax Highlight
+.highlight .ge,
+  .highlight .kc,
+  .highlight .kd,
+  .highlight .kn,
+  .highlight .kp,
+  .highlight .kr,
+  .highlight .k,
+  .highlight .kv,
+  .highlight .ow,
+  .highlight .o {
+    color: #fff;
+  }
