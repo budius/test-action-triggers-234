@@ -37,6 +37,19 @@ GitHubPages::Dependencies.gems.each do |gem, version|
 end
 ```
 
+```kotlin
+// Kotlin code with syntax highlight
+data class Foobar(
+    val foo: String,
+    val bar: Int
+) {
+    @Deprecated("YOLO", ReplaceWith("something else"))
+    fun superSuper(): String {
+        return "$foo-$bar"
+    }
+}
+```
+
 #### Header 4
 
 *   This is an unordered list following a header.
