@@ -16,10 +16,12 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Echo input
+        shell: bash
         run: echo "Input is: ${{ inputs.foobar }}"
 
       - name: Run external action
         uses: ./.github/actions/other_action
       
       - name: Check the external action variable
+        shell: bash
         run: echo "Input is: ${{ inputs.foobar }} and external var is $FILENAME"
