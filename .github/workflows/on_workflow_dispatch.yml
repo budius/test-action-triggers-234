@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Echo input
-        run: echo Input is: ${{ inputs.foobar }}
+        run: echo Input is ${{ inputs.foobar }}
 
       - name: Run external action
         uses: ./.github/actions/other_action
