@@ -1,0 +1,9 @@
+name: Example external action
+
+runs:
+  using: "composite"
+  steps:
+    - name: Outputs an environment variable
+      id: set-filename
+      shell: bash
+      run: echo "FILENAME=temp-$(date +'%Y-%m-%d-%H-%M')-${{ github.sha }}" >> $GITHUB_ENV

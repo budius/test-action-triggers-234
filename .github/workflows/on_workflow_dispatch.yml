@@ -1,0 +1,25 @@
+name: Test workflow_dispatch
+
+on:
+  workflow_dispatch:
+    inputs:
+      foobar:
+        description: Please input something
+        type: string
+        required: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+
+      - name: Echo input
+        run: echo "Input is: $inputs.foobar"
+
+      - name: Run external action
+        uses: ./.github/actions/other_action
+      
+      - name: Check the external action variable
+        run: echo "Input is: $inputs.foobar and external var is $FILENAME"
