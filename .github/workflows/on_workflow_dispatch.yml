@@ -23,4 +23,4 @@ jobs:
       
       - name: Check the external action variable
         shell: bash
-        run: echo "Input is: ${{ inputs.foobar }} and external var is $FILENAME"
+        run: echo Input is ${{ inputs.foobar }} and external var is $FILENAME
